@@ -1,0 +1,20 @@
+<h1>Player Shot Stats Response Page</h1>
+<div>
+  <mat-form-field>
+    <input matInput placeholder="playerID" [(ngModel)]="playerID" (ngModelChange)="changeParams()">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="teamID" [(ngModel)]="teamID" (ngModelChange)="changeParams()">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="gameID" [(ngModel)]="gameID" (ngModelChange)="changeParams()">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="gameDate" [(ngModel)]="gameDate" (ngModelChange)="changeParams()" [matDatepicker]="picker" autocomplete="off">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div>API response for {{ endpoint }}</div>
+<pre>{{ apiResponse }}</pre>
