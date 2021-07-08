@@ -3,7 +3,7 @@
 
 ### 1. Backend Engineering
 
-* Architect and implement a normalized PostgreSQL database to store the data provided in `backend/raw_data/play_by_play.csv`. All information in the original data should be accessible via the database, such that a query could reproduce the attached dataset in its full form.  
+* Architect and implement a normalized PostgreSQL database to store the data provided in `backend/raw_data/play_by_play.csv`. All information in the original data should be accessible via the database, such that a query could reproduce the attached dataset in its full form. In addition to the data that exists in the .csv, you will need to create and store a `gameid` attribute. Each distinct combination of gametimestamp, homenbateamid, and awaynbateamid should share a unique gameid.
 
 * Write a brief description of your database architecture (<250 words). Feel free to provide a visual representation as an aide. Submit relevant responses in the `written_responses` folder provided.
 
