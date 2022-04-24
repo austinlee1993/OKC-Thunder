@@ -18,6 +18,17 @@ import {StatsService} from './../_services/stats.service';
 })
 export class PlayerStatsComponent implements OnInit, OnDestroy {
 
+  playerData = null;  
+  totalGames = null;
+  totalFT = null;
+  totalAst = null;
+  totalBlocks = null;
+  total3Taken = null;
+  total3Made = null;
+  totalShots = null;
+  total2Made = null;
+
+
   constructor(
     protected activatedRoute: ActivatedRoute,
     protected cdr: ChangeDetectorRef,
@@ -28,7 +39,27 @@ export class PlayerStatsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.statsService.getPlayerStats().pipe(untilDestroyed(this)).subscribe(data => {
-      console.log(data);
+      
+     
+      
+      this.playerData = data;
+      this.totalGames = 82;
+
+      data.forEach(player => {
+      
+        
+        this.totalFT += player.ftMade + player.ftMissed;
+        this.totalAst += player.assists;
+        this.totalBlocks += player.blocks;
+        this.total3Taken += player.fg3Made + player.fg3Missed;
+        this.total3Made += player.fg3Made;
+        this.total2Made += player.fg2Made;
+        this.totalShots += player.fgMade +  player.fgMissed;
+      });
+
+     
+
+      
     });
   }
 

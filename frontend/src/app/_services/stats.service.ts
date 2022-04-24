@@ -16,7 +16,7 @@ export class StatsService extends BaseService {
 
   getPlayerStats(): Observable<any> {
     const endpoint = `${this.baseUrl}/playerStats`;
-
+    //console.log("getting player stats");
     return this.get(endpoint).pipe(map(
       (data: Object) => {
           return data;
@@ -30,7 +30,7 @@ export class StatsService extends BaseService {
   getPlayerShotStats(playerID?: number, teamID?: number, gameID?: number, gameDate?: string): Observable<any> {
     const endpoint = `${this.baseUrl}/playerShotStats`;
     let params: HttpParams = new HttpParams();
-
+    //console.log("getting player shot stats") 
     if (playerID) {
       params = params.set('playerID', playerID);
     }

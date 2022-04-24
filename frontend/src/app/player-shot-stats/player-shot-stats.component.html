@@ -9,12 +9,13 @@
   <mat-form-field>
     <input matInput placeholder="gameID" [(ngModel)]="gameID" (ngModelChange)="changeParams()">
   </mat-form-field>
+  <!-- Comment out because couldn't figure out how to filter gamestime stamp by only date 
   <mat-form-field>
     <input matInput placeholder="gameDate" [(ngModel)]="gameDate" (ngModelChange)="changeParams()" [matDatepicker]="picker" autocomplete="off">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+  </mat-form-field>-->
 </div>
 
-<div>API response for {{ endpoint }}</div>
+<div>Backend time API response for {{ endpoint }}</div>
 <pre>{{ apiResponse }}</pre>

@@ -1,1 +1,54 @@
-<div class="placeholder">Place your content here!</div>
+<div class="placeholder">
+<h2 class="player-title">Player Statistics</h2>
+<table class = "stats-table">
+    <tr>
+        <th>Player ID</th>
+        <th>PPG</th>
+        <th>REB/G</th>
+        <th>FTA/G</th>
+        <th>3P%</th>
+        <th>eFG%</th>
+        <th>AST/G</th>
+        <th>Total Blocks</th>
+        <th>Steals/G</th>
+        <th>TOs/G</th>
+    </tr>
+        <tr *ngFor='let player of playerData'>                
+                <td>{{player.id}}</td>    
+                <td>{{player.points/player.gamesPlayed | number : '1.1-1'}}</td>  
+                <td>{{(player.rebDefensive + player.rebOffensive)/player.gamesPlayed | number : '1.1-1'}}</td>                    
+                <td>{{(player.ftMade + player.ftMissed)/player.gamesPlayed | number : '1.2-2'}}</td>
+                <td *ngIf="player.fg3Missed + player.fg3Made > 0">{{player.fg3Made/(player.fg3Made + player.fg3Missed) | number : '1.2-2' }}</td>
+                <td *ngIf="player.fg3Missed + player.fg3Made == 0">N/A</td>
+                <td *ngIf="player.fgMade + player.fgMissed > 0">{{(player.fg2Made + (1.5 * player.fg3Made))/(player.fgMade + player.fgMissed) | number : '1.2-2'}}</td>
+                <td *ngIf="player.fgMade + player.fgMissed == 0">N/A</td>
+                <td>{{player.assists/player.gamesPlayed | number : '1.1-1'}}</td>
+                <td>{{player.blocks}}</td>
+                <td>{{player.steals/player.gamesPlayed | number : '1.1-1'}}</td>
+                <td>{{player.turnovers/player.gamesPlayed | number : '1.1-1'}}</td>
+                
+        </tr>
+</table>
+
+<h2 class="player-title">Team Statistics</h2>
+
+<table class = "stats-table">
+        <tr>
+                <th>FTA/G</th>
+                <th>3P%</th>
+                <th>eFG%</th>
+                <th>AST/G</th>
+                <th>Total Blocks</th>
+        </tr>
+        <tr>
+            <td>{{totalFT/82 | number : '1.1-1'}}</td>
+            <td>{{total3Made/total3Taken | number : '1.1-2'}}</td>
+            <td>{{(total2Made + (1.5 * total3Made))/totalShots | number : '1.2-2'}}</td>
+            <td>{{totalAst/82 | number : '1.1-1'}}</td>
+            <td>{{totalBlocks}}</td>
+        </tr>
+            
+    </table>
+    
+
+</div>

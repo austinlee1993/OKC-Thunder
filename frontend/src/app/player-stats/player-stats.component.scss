@@ -1,8 +1,22 @@
 player-stats-component {
-  .placeholder {
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  
+.player-title{
+  text-align:center;
+  margin-top:50px
+}
+.stats-table{
+    margin: 0px auto 0;
+    border:1px solid #ccc
+}
+
+.stats-table th,
+.stats-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  text-align: center;
+}
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
   }
 }

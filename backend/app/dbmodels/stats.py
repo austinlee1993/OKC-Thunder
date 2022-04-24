@@ -8,7 +8,8 @@ class PlayerStats(models.Model):
     """
     class Meta:
         db_table = 'player_stats'
-
+        
+    
     id = models.BigAutoField(primary_key=True, db_index=True)
     player_id = models.IntegerField(null=False, db_index=True)
     games_played = models.IntegerField(null=False, db_index=True)
@@ -30,7 +31,10 @@ class PlayerStats(models.Model):
     fg3_made = models.IntegerField(null=False, db_index=True)
     fg3_missed = models.IntegerField(null=False, db_index=True)
 
+    
+
     def to_dict(self):
+        
         return dict(
             id=self.id,
             playerID=self.player_id,
@@ -53,3 +57,109 @@ class PlayerStats(models.Model):
             fg3Made=self.fg3_made,
             fg3Missed=self.fg3_missed,
         )
+
+class PlayerShotStats(models.Model):
+    """
+    PlayerShot Stats
+    """
+    class Meta:
+        db_table = 'play_by_play'
+        
+    
+    leagueid = models.BigIntegerField(null=False, db_index=True)
+    leaguename = models.TextField(null=False, db_index=True)
+    seasontype = models.TextField(null=False, db_index=True)
+    gametimestamp = models.DateTimeField(null=False, db_index=True)
+    homenbateamid = models.IntegerField(null=False, db_index=True)
+    hometeamname = models.TextField(null=False, db_index=True)
+    awaynbateamid = models.IntegerField(null=False, db_index=True)
+    awayteamname = models.TextField(null=False, db_index=True)
+    nbateamid = models.IntegerField(null=False, db_index=True)
+    nbapersonid = models.IntegerField(null=False, db_index=True)
+    nbapersonname = models.TextField(null=False, db_index=True)
+    eventid = models.IntegerField(null=False, db_index=True)     
+    period = models.IntegerField(null=False, db_index=True)  
+    minutesecond = models.TimeField(null=False, db_index=True)       
+    points = models.IntegerField(null=False, db_index=True)
+    blockedshot = models.IntegerField(null=False, db_index=True)   
+    rebdefensive = models.IntegerField(null=False, db_index=True)
+    fg3attempted = models.IntegerField(null=False, db_index=True)
+    assist = models.IntegerField(null=False, db_index=True)
+    ftmade = models.IntegerField(null=False, db_index=True)    
+    fgmade = models.IntegerField(null=False, db_index=True)
+    fgattempted = models.IntegerField(null=False, db_index=True)
+    fg2attempted = models.IntegerField(null=False, db_index=True)
+    ftattempted = models.IntegerField(null=False, db_index=True)
+    turnover = models.IntegerField(null=False, db_index=True)
+    fg2made = models.IntegerField(null=False, db_index=True)
+    reboffensive = models.IntegerField(null=False, db_index=True)
+    fg3made = models.IntegerField(null=False, db_index=True)
+    gameid = models.BigAutoField(primary_key=True, db_index=True) 
+
+
+
+    def get_shots(self):
+
+        if self.fgattempted > 0:
+
+            return dict(
+                
+                fgAttempted=self.fgattempted,      
+                nbaPersonID = self.nbapersonid,                     
+                
+            )
+        else:
+            return None
+    
+    def get_twos(self):
+
+        if self.fg2attempted > 0:
+
+            return dict(                  
+                    
+                    fg2Attempted = self.fg2attempted,                              
+                    
+                )
+        else:
+            return None
+
+        
+    def get_threes(self):
+
+        if self.fg3attempted > 0:
+
+            return dict(                  
+                    
+                    fg3Attempted = self.fg3attempted,                              
+                    
+                )
+        else:
+            return None
+    
+    def get_twos_made(self):
+
+        if self.fg2made > 0:
+
+            return dict(                  
+                    
+                    fg2Made = self.fg2made,                              
+                    
+                )
+        else:
+            return None
+    
+    def get_threes_made(self):
+
+        if self.fg3made > 0:
+
+            return dict(                  
+                    
+                    fg3Made = self.fg3made,                              
+                    
+                )
+        else:
+            return None
+
+
+
+        

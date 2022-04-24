@@ -43,12 +43,19 @@ export class PlayerShotStatsComponent implements OnInit, OnDestroy {
   }
 
   fetchApiResponse(): void {
+    console.log("fetchAPI");
     let momentDate = null;
     if (this.gameDate) {
+      console.log(this.gameDate);
       momentDate = new Date(this.gameDate);
     }
     let formattedDate = momentDate ? moment(momentDate).format("MM-DD-YYYY") : null;
+
+    
+
     this.statsService.getPlayerShotStats(this.playerID, this.teamID, this.gameID, formattedDate).pipe(untilDestroyed(this)).subscribe(data => {
+     
+
       this.endpoint = data.endpoint;
       this.apiResponse = JSON.stringify(data.apiResponse, null, 2);
     });
