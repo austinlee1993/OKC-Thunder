@@ -119,4 +119,4 @@ The frontend should run on http://127.0.0.1:4200/ (http://localhost:4200/). Visi
 <br></br>
 # Questions?
 
-Email bpalipatana@okcthunder.com and tvandehouten@okcthunder.com.
+
